@@ -3,7 +3,7 @@
 
 struct alum{
 	int legajo;
-	int nota[4];
+	int nota[3];
 };
 
 main(){
@@ -16,13 +16,13 @@ main(){
 	
 	if (alumnos == NULL) {
         perror("Error al abrir alumnos.dat");
-        return 1;
+        exit(1);
     }
 
     if (aux == NULL) {
         perror("Error al abrir aux.dat");
         fclose(alumnos);
-        return 1;
+        exit(1);
     }
 
 	printf("Ingrese un numero de legajo a ingresar: ");
@@ -78,7 +78,13 @@ main(){
  		printf("\n\nRegistro dado de baja");
  	}  	
  	
- 	
+ 	fclose(aux);
+ 	fopen("aux.dat", "rb");
+	fread(&alumno, sizeof(alum), 1, aux);
+	while(!feof(aux)){
+		printf("\n\nLegajo restantes: %d", alumno.legajo);
+		fread(&alumno, sizeof(alum), 1, aux);
+	}
  	
  	
  	fclose(alumnos);
