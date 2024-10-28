@@ -9,13 +9,14 @@ struct registro{
 	int codigo;
 	char descripcion[30];
 	float precio;
+	int cantidad;
 	fecha ven;
 };
 
 main(){
 	registro Art;
 	FILE *productos;
-	productos= fopen("productos.dat", "ab");
+	productos= fopen("productos.dat", "w+b");
 	int codigo=1;
 	
 	printf("Ingresa el codigo del nuevo articulo: ");
@@ -39,6 +40,9 @@ main(){
 		
 		printf("Ingresa el año de vencimiento del articulo: ");
 		scanf("%d", &Art.ven.anio);
+		
+		printf("Ingresa la cantidad de articulos: ");
+		scanf("%d", &Art.cantidad);
 		
 		fwrite(&Art, sizeof(registro), 1, productos);
 		

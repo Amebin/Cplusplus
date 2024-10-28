@@ -10,6 +10,7 @@ struct registro{
 	int codigo;
 	char descripcion[30];
 	float precio;
+	int cantidad;
 	fecha ven;
 };
 
