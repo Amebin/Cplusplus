@@ -4,8 +4,8 @@
 
 struct empleado{
 	int legajo;
-	char ayn[50];
-	char cargo[30];
+	char nombreUsuario[11];
+	char contrasenia[32];
 	float sueldo;
 	int edad;
 };
@@ -17,9 +17,9 @@ main(){
 	FILE *empleados;
 	float total, promS, promE;
 	
-	if(fopen("empleados.dat", "rb") == NULL){
+//	if(fopen("empleados.dat", "rb") == NULL){
 		Cargar();
-	}
+//	}
 	
 	Calcular(total, promS, promE);
 	
@@ -49,17 +49,17 @@ void Cargar(){
 		
 		printf("\nIngresa el apellido y nombre del empleado: ");
 		_flushall();
-		gets(emp.ayn);
+		gets(emp.nombreUsuario);
 		
 		printf("\nIngresa el cargo: ");
 		_flushall();
-		gets(emp.cargo);
+		gets(emp.contrasenia);
 		
-		printf("\nIngresa el sueldo del empleado: ");
+		/*printf("\nIngresa el sueldo del empleado: ");
 		scanf("%f", &emp.sueldo);
 		
 		printf("\nIngresa la edad del empleado: ");
-		scanf("%d", &emp.edad);
+		scanf("%d", &emp.edad);*/
 		
 		fwrite(&emp, sizeof(emp), 1, empleados);
 		
@@ -71,8 +71,8 @@ void Cargar(){
 	fread(&emp, sizeof(emp), 1, empleados);
 	while(!feof(empleados)){
 		printf("\n\nLegajo: %d", emp.legajo);
-		printf("\nApellido y nombre: "); puts(emp.ayn);
-		printf("Cargo: "); puts(emp.cargo);
+		printf("\nApellido y nombre: "); puts(emp.nombreUsuario);
+		printf("Cargo: "); puts(emp.contrasenia);
 		printf("Sueldo: %.2f", emp.sueldo);
 		printf("\nEdad: %d", emp.edad);
 		

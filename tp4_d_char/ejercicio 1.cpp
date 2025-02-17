@@ -14,6 +14,7 @@ main(){
 		_flushall();
 		Len= strlen(Provincia);
 		printf("\t| %d |\n", Len);
+		printf("\t| %d |\n", strlen(Corto));
 		
 		if(Len<=strlen(Corto) || strlen(Corto)==0){
 		
